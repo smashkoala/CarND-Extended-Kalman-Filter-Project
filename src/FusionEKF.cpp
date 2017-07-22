@@ -43,9 +43,6 @@ FusionEKF::FusionEKF() {
   tools = Tools();
   ekf_ = KalmanFilter();
   
-//  void KalmanFilter::Init(VectorXd &x_in, MatrixXd &P_in, MatrixXd &F_in,
-//                          MatrixXd &H_in, MatrixXd &R_in, MatrixXd &Q_in) {
-  
   //create a 4D state vector, we don't know yet the values of the x state
   VectorXd x = VectorXd(4);
   
@@ -135,7 +132,8 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
      * Update the process noise covariance matrix.
      * Use noise_ax = 9 and noise_ay = 9 for your Q matrix.
    */
-   //compute the time elapsed between the current and previous measurements
+  
+  //compute the time elapsed between the current and previous measurements
   float dt = (measurement_pack.timestamp_ - previous_timestamp_) / 1000000.0;	//dt - expressed in seconds
   previous_timestamp_ = measurement_pack.timestamp_;
 
